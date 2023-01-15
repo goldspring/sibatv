@@ -1,0 +1,69 @@
+    group 'com.example.lsnetchatplugin'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.7.0'
+    ext.netease_version = '9.8.0'
+    ext.gson_version = '2.8.6'
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 28
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+    defaultConfig {
+        minSdkVersion 16
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    buildTypes {
+        release {
+            // ProGuardの設定ファイル（この部分を追記）
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "com.netease.nimlib:basesdk:$netease_version"
+    // 音视频和互动白板服务需要
+    //implementation "com.netease.nimlib:nrtc:$netease_version"
+    // 音视频需要
+    //implementation "com.netease.nimlib:avchat:$netease_version"
+    // 聊天室需要
+    implementation "com.netease.nimlib:chatroom:$netease_version"
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.8.1'
+
+    implementation 'com.squareup.okio:okio:2.2.2'
+}

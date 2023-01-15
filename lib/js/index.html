@@ -1,0 +1,28 @@
+<!--
+init('3872033');
+init('67217596');
+-->
+
+<html>
+<head>
+<script>
+
+var isFlutterInAppWebViewReady = false;
+window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
+ isFlutterInAppWebViewReady = true;
+ console.log("+++++++++++isFlutterInAppWebViewReady = true +++++++++++++++");
+});
+/*
+'setMessagesView' is  flutter code
+*/
+const setMessagesView = (...args) => {
+	if (isFlutterInAppWebViewReady) window.flutter_inappwebview.callHandler('setMessagesView',...args);
+};
+
+</script>
+<script src="./NIM_Web_SDK_v8.3.5.js" ></script>
+<script src="./room.js"></script>
+</head>
+<body>
+</body>
+</html>

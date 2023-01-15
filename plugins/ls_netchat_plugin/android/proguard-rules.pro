@@ -1,0 +1,2 @@
+-dontwarn com.netease.**
+-keep class com.netease.** {*;}
