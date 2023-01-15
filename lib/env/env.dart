@@ -9,5 +9,5 @@ class Env {
   @EnviedField(obfuscate: true, varName: 'NIM_WEB_LINKADDR')
   static String nimWebLinkAddr = _Env.nimWebLinkAddr;
   @EnviedField(obfuscate: true, varName: 'NIM_LINKADDR')
-  static String nimLinkAddr = _Env.nimApiKey;
+  static String nimLinkAddr = _Env.nimLinkAddr;
 }
